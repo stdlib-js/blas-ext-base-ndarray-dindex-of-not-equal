@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,19 +16,11 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
 
-var numelDimension = require( '@stdlib/ndarray-base-numel-dimension' );
-var getStride = require( '@stdlib/ndarray-base-stride' );
-var getOffset = require( '@stdlib/ndarray-base-offset' );
-var getData = require( '@stdlib/ndarray-base-data-buffer' );
-var ndarraylike2scalar = require( '@stdlib/ndarray-base-ndarraylike2scalar' );
-var strided = require( '@stdlib/blas-ext-base-dindex-of-not-equal' ).ndarray;
-
-
-// MAIN //
+import { float64ndarray, typedndarray } from '@stdlib/types/ndarray';
 
 /**
 * Returns the first index of an element in a one-dimensional double-precision floating-point ndarray which is not equal to a specified search element.
@@ -40,8 +32,8 @@ var strided = require( '@stdlib/blas-ext-base-dindex-of-not-equal' ).ndarray;
 *     -   a one-dimensional input ndarray.
 *     -   a zero-dimensional ndarray containing the search element.
 *
-* @param {ArrayLikeObject<Object>} arrays - array-like object containing ndarrays
-* @returns {integer} index
+* @param arrays - array-like object containing ndarrays
+* @returns index
 *
 * @example
 * var Float64Vector = require( '@stdlib/ndarray-vector-float64' );
@@ -56,12 +48,9 @@ var strided = require( '@stdlib/blas-ext-base-dindex-of-not-equal' ).ndarray;
 * var v = dindexOfNotEqual( [ x, searchElement ] );
 * // returns 2
 */
-function dindexOfNotEqual( arrays ) {
-	var x = arrays[ 0 ];
-	return strided( numelDimension( x, 0 ), ndarraylike2scalar( arrays[ 1 ] ), getData( x ), getStride( x, 0 ), getOffset( x ) ); // eslint-disable-line max-len
-}
+declare function dindexOfNotEqual( arrays: [ float64ndarray, typedndarray<number> ] ): number;
 
 
 // EXPORTS //
 
-module.exports = dindexOfNotEqual;
+export = dindexOfNotEqual;
